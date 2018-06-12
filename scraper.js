@@ -26,7 +26,7 @@ function searchMovies(searchTerm) {
         const imdbID = $title.attr('href').match(/title\/(.*)\//)[1];
 
         const movie = {
-          image: $image.attr('src'),
+          image: $image.attr('src').match('.+?@'),
           title: $title.text(),
           imdbID
         };
@@ -67,7 +67,7 @@ function getMovie(imdbID) {
 
       const datePublished = $('meta[itemProp="datePublished"]').attr('content');
       const imdbRating = $('span[itemProp="ratingValue"]').text();
-      const poster = $('div.poster a img').attr('src');
+      const poster = $('img[itemProp="image"]').attr('src').match('.+?@');
       const summary = $('div.summary_text').text().trim();
 
 
